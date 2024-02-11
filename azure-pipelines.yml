@@ -16,4 +16,4 @@ steps:
     repository: 'anasabubakar/web-app-devops-project'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: 'latest-version'
+    tags: 'latest'
