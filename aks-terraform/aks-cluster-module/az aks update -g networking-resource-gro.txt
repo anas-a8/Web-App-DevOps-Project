@@ -1,0 +1,2 @@
+az aks update -g networking-resource-group -n terraform-aks-cluster --enable-managed-identity
+az aks update --resource-group networking-resource-group --name terraform-aks-cluster --enable-managed-identity
