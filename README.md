@@ -1,5 +1,10 @@
 # Web Application DevOps Project
 
+## Introduction
+
+The project spans multiple milestones, each focusing on a different aspect of the DevOps lifecycle. From setting up the development environment and implementing version control best practices to deploying the application on a Kubernetes cluster and ensuring its security with Azure Key Vault, this project covers the full spectrum of DevOps methodologies.
+
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
