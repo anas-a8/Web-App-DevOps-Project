@@ -1,62 +1,95 @@
-# Web-App-DevOps-Project
-
-Welcome to the Web App DevOps Project repo! This application allows you to efficiently manage and track orders for a potential business. It provides an intuitive user interface for viewing existing orders and adding new ones.
+# Web Application DevOps Project
 
 ## Table of Contents
 
+- [Project Overview](#project-overview)
 - [Features](#features)
+- [Technical Documentation](#technical-documentation)
+  - [Containerization](#containerization)
+  - [Infrastructure as Code (IaC)](#infrastructure-as-code-iac)
+  - [Kubernetes Deployment](#kubernetes-deployment)
+  - [CI/CD Pipeline](#cicd-pipeline)
+  - [Monitoring and Logging](#monitoring-and-logging)
+  - [Secrets Management](#secrets-management)
 - [Getting Started](#getting-started)
-- [Technology Stack](#technology-stack)
-- [Contributors](#contributors)
+- [Contributing](#contributing)
 - [License](#license)
+
+## Project Overview
+
+This project demonstrates a DevOps lifecycle for a web application that enables businesses to manage orders effectively. While certain features may be reverted or pending future implementation, comprehensive documentation ensures that developers and end-users can understand and utilize the application's full capabilities.
 
 ## Features
 
-- **Order List:** View a comprehensive list of orders including details like date UUID, user ID, card number, store code, product code, product quantity, order date, and shipping date.
-  
-![Screenshot 2023-08-31 at 15 48 48](https://github.com/maya-a-iuga/Web-App-DevOps-Project/assets/104773240/3a3bae88-9224-4755-bf62-567beb7bf692)
+- **Order management and tracking** with detailed order insights.
+- **Pagination** for efficient navigation through large datasets.
+- **Data validation** to ensure accuracy and integrity of order information.
 
-- **Pagination:** Easily navigate through multiple pages of orders using the built-in pagination feature.
-  
-![Screenshot 2023-08-31 at 15 49 08](https://github.com/maya-a-iuga/Web-App-DevOps-Project/assets/104773240/d92a045d-b568-4695-b2b9-986874b4ed5a)
+## Technical Documentation
 
-- **Add New Order:** Fill out a user-friendly form to add new orders to the system with necessary information.
-  
-![Screenshot 2023-08-31 at 15 49 26](https://github.com/maya-a-iuga/Web-App-DevOps-Project/assets/104773240/83236d79-6212-4fc3-afa3-3cee88354b1a)
+### Containerization
 
-- **Data Validation:** Ensure data accuracy and completeness with required fields, date restrictions, and card number validation.
+The application is containerized using Docker, encapsulating its dependencies and runtime environment. This process involves:
+
+- **Dockerfile Creation**: A Dockerfile was crafted to specify the application's environment, copy project files, and define the runtime command.
+
+#### Docker Commands
+
+- **Build Image**: `docker build -t app-name:tag .`
+- **Run Container**: `docker run --name app-container -p 80:80 app-name:tag`
+- **Tag Image**: `docker tag app-name:tag username/app-name:tag`
+- **Push to Docker Hub**: `docker push username/app-name:tag`
+
+#### Cleanup
+
+- **Remove Containers**: `docker rm $(docker ps -a -q)`
+- **Remove Images**: `docker rmi $(docker images -q)`
+
+### Infrastructure as Code (IaC)
+
+Using Terraform, we defined and provisioned the networking resources and the AKS cluster necessary for the application:
+
+- **Networking**: Defined Azure Resource Group, Virtual Network (VNet), subnets, and Network Security Groups (NSG) to support the AKS cluster.
+- **AKS Cluster**: Provisioned an AKS cluster integrated with the defined networking resources, using Terraform modules for modularity and reusability.
+
+### Kubernetes Deployment
+
+Deployment and service manifests define the Kubernetes resources for the application:
+
+- **Deployment Manifest**: Specifies the desired state of the application, including the Docker image and resource requirements.
+- **Service Manifest**: Defines how the application is exposed within the cluster or externally.
+- **Deployment Strategy**: Utilizes a rolling update strategy to minimize downtime during updates.
+
+### CI/CD Pipeline
+
+Configured a CI/CD pipeline using Azure DevOps to automate the build, test, and deployment processes:
+
+- **Pipeline Configuration**: Includes steps for building the Docker image, pushing it to Docker Hub, and deploying to AKS using Helm charts or kubectl.
+- **Validation**: Automated tests ensure application functionality and reliability post-deployment.
+
+### Monitoring and Logging
+
+Implemented monitoring and logging using Azure Monitor and Log Analytics:
+
+- **Metrics Explorer Charts**: Track key metrics like CPU usage, pod counts, and disk usage.
+- **Log Analytics**: Provides detailed logs for diagnosing issues and understanding application behavior.
+- **Alerts**: Configured to notify of critical conditions that may affect the application's performance or availability.
+
+### Secrets Management
+
+Integrated Azure Key Vault for secure secrets management, allowing the application to access database credentials securely:
+
+- **Azure Key Vault Setup**: Created and configured Key Vault with necessary secrets.
+- **Managed Identity**: Enabled AKS to use a managed identity to securely retrieve secrets from Key Vault.
 
 ## Getting Started
 
-### Prerequisites
+Refer to the individual documentation sections for detailed setup and usage instructions.
 
-For the application to succesfully run, you need to install the following packages:
+## Contributing
 
-- flask (version 2.2.2)
-- pyodbc (version 4.0.39)
-- SQLAlchemy (version 2.0.21)
-- werkzeug (version 2.2.3)
-
-### Usage
-
-To run the application, you simply need to run the `app.py` script in this repository. Once the application starts you should be able to access it locally at `http://127.0.0.1:5000`. Here you will be meet with the following two pages:
-
-1. **Order List Page:** Navigate to the "Order List" page to view all existing orders. Use the pagination controls to navigate between pages.
-
-2. **Add New Order Page:** Click on the "Add New Order" tab to access the order form. Complete all required fields and ensure that your entries meet the specified criteria.
-
-## Technology Stack
-
-- **Backend:** Flask is used to build the backend of the application, handling routing, data processing, and interactions with the database.
-
-- **Frontend:** The user interface is designed using HTML, CSS, and JavaScript to ensure a smooth and intuitive user experience.
-
-- **Database:** The application employs an Azure SQL Database as its database system to store order-related data.
-
-## Contributors 
-
-- [Maya Iuga]([https://github.com/yourusername](https://github.com/maya-a-iuga))
+Contributions are welcome! Please read through our contributing guidelines for detailed contribution procedures.
 
 ## License
 
-This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
