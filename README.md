@@ -22,13 +22,7 @@ The project spans multiple milestones, each focusing on a different aspect of th
 
 ## Project Overview
 
-This project demonstrates a DevOps lifecycle for a web application that enables businesses to manage orders effectively. While certain features may be reverted or pending future implementation, comprehensive documentation ensures that developers and end-users can understand and utilize the application's full capabilities.
-
-## Features
-
-- **Order management and tracking** with detailed order insights.
-- **Pagination** for efficient navigation through large datasets.
-- **Data validation** to ensure accuracy and integrity of order information.
+This DevOps project integrates multiple technologies and practices to deploy a web application that allows users to manage and track orders. The application features an intuitive UI, database integration for order storage, and secure access controls.
 
 ## Technical Documentation
 
